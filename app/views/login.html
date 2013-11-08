@@ -1,0 +1,37 @@
+<div class="hero-unit">
+
+    <form>
+
+        <h1>Sextoys !</h1>
+        <p>You now have</p>
+
+        <label for="login">Login</label>
+        <input ng-required="true" type="email" placeholder="name@domain.com" name="login" id="login" ng-model="user">
+
+        <label for="password">Password</label>
+        <input ng-required="true" type="password" placeholder="your password" id="password" name="password" ng-model="password">
+
+        <p>
+            <label class="checkbox" for="protect">
+                <input ng-model="adult" ng-required="true" type="checkbox" name="protect" id="protect" />
+                J'ai plus de 18 ans
+            </label>
+        </p>
+
+        <p>
+            <input ng-disabled="!adult" class="btn btn-success btn-large btn-block" type="submit" value="Entrer" ng-click="login()" />
+        </p>
+
+        <div class="alert" ng-show="!auth">
+            <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+            <strong>Warning!</strong> vérifiez votre login / pass. Bisous
+        </div>
+
+    </form>
+
+    <!--<ul>
+        <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+    </ul>
+    <p>installed.</p>
+    <h3>Enjoy coding! - Yeoman</h3>-->
+</div>
