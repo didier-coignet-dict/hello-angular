@@ -13,10 +13,10 @@ angular.module('stApp')
                 desc    : 'lorem ipsum dolor sit amet consectetur adipiscing elit'
             },
 
-            canard: {
-                id: 'canodolly',
-                name : 'Canodolly',
-                url: 'http://www.objets-publicitaires-pro.com/images/objet-publicitaire/produit/large/canard-publicitaire-equitation-jaune.jpg',
+            canodolly: {
+                id      : 'canodolly',
+                name    : 'Canodolly',
+                url     : 'http://www.objets-publicitaires-pro.com/images/objet-publicitaire/produit/large/canard-publicitaire-equitation-jaune.jpg',
                 desc    : 'Nam lacus felis, placerat sed est non, interdum imperdiet massa'
             }
 
