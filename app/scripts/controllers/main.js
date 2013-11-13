@@ -12,7 +12,7 @@ angular.module('stApp').controller('MainCtrl', function ($scope, UserService, $l
 
         if($scope.auth) {
 
-            $location.path('/sextoys');
+            $location.path('/list');
 
         }
 

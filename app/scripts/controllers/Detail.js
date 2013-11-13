@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('stApp')
-  .controller('DetailCtrl', function ($scope, $routeParams, Sextoyservice) {
+  .controller('DetailCtrl', function ($scope, $routeParams, Productservice) {
 
-        $scope.sextoy = Sextoyservice.toys[$routeParams.id];
+        $scope.product = Productservice.products[$routeParams.id];
 
   });

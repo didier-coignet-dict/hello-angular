@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('stApp')
-  .controller('ListCtrl', function ($scope, Sextoyservice) {
+  .controller('ListCtrl', function ($scope, Productservice) {
 
-        $scope.toys = Sextoyservice.toys;
-
+        $scope.products = Productservice.products;
 
   });

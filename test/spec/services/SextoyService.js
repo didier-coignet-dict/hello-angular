@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: Sextoyservice', function () {
+describe('Service: Productservice', function () {
 
   // load the service's module
   beforeEach(module('StApp'));

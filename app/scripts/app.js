@@ -2,22 +2,28 @@
 
 angular.module('stApp', [
   'ngCookies',
-  'ngResource'/*,
+  'ngResource',
+  'ngRoute'/*,
   'ngSanitize'*/
 ])
   .config(function ($routeProvider) {
     $routeProvider
-        .when('/', {
+        /*.when('/', {
             templateUrl: 'views/login.html',
             controller: 'MainCtrl'
-        })
+        })*/
 
-        .when('/sextoys', {
+        .when('/', {
             templateUrl: 'views/list.html',
             controller: 'ListCtrl'
         })
 
-        .when('/sextoy/:id', {
+        .when('/list', {
+            templateUrl: 'views/list.html',
+            controller: 'ListCtrl'
+        })
+
+        .when('/detail/:id', {
             templateUrl: 'views/detail.html',
             controller: 'DetailCtrl'
         })
