@@ -1,0 +1,16 @@
+<div class="hero-unit">
+
+    <h3>List</h3>
+
+    <ul>
+        <li ng-repeat="product in products">
+            <a href="#/detail/{{product.id}}">
+
+                <img src="{{product.url}}" alt="">
+
+                <span>{{product.name}}</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
