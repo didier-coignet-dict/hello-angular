@@ -5,4 +5,6 @@ angular.module('stApp')
 
         $scope.products = Productservice.products;
 
+        $scope.htmlReady();
+
   });

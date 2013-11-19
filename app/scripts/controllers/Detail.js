@@ -5,4 +5,6 @@ angular.module('stApp')
 
         $scope.product = Productservice.products[$routeParams.id];
 
+        $scope.htmlReady();
+
   });
