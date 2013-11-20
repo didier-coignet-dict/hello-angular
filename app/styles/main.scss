@@ -30,3 +30,20 @@ body {
     line-height: 1;
     letter-spacing: -1px;
 }
+
+.panesWrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.paneWrapper {
+  position: absolute;
+  margin-top: -1000px;
+
+  @include transition(all 500ms);
+
+  &.active {
+    position: relative;
+    margin-top: 0px;
+  }
+}

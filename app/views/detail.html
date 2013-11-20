@@ -4,11 +4,21 @@
 
     <p><a class="btn" href="#/list"><i class="icon-chevron-left"></i></a></p>
 
-    <p class="text-right">{{product.price}} €</p>
+    <div sglk-tabs>
 
-    <!--<p><img src="{{product.url}}" alt=""/></p>-->
-    <br>
-    <p>{{product.desc}}</p>
-    <pre>{{formConfig.predicate | json}}</pre>
+        <div sglk-tab text="Caractéristiques">
+
+            <!--<p><img src="{{product.url}}" alt=""/></p>-->
+            <p class="text-right">{{product.price}} €</p>
+            <br>
+            <p>{{product.desc}}</p>
+
+        </div>
+
+        <div sglk-tab text="Test">
+            <pre>{{formConfig.predicate | json}}</pre>
+        </div>
+
+    </div>
 
 </div>

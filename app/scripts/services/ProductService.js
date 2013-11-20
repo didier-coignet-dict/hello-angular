@@ -8,7 +8,7 @@ angular.module('stApp')
 
             {
                 id      : 'chaussures',
-                name    : 'Chaussures',
+                name    : 'Produit',
                 url     : 'http://www.hypebeast.com/image/2008/10/lupe-fiasco-product-red-converse-all-star-01.jpg',
                 desc    : 'lorem ipsum dolor sit amet consectetur adipiscing elit',
                 price   : 10
