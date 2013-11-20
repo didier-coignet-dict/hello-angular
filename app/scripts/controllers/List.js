@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('stApp')
-  .controller('ListCtrl', function ($scope, Productservice) {
+  .controller('ListCtrl', function ($scope, ProductService, ListService) {
 
-        $scope.products = Productservice.products;
+        $scope.products     = ProductService.products;
+        $scope.formConfig   = ListService.priceFilter;
 
-        $scope.htmlReady();
+        //$scope.htmlReady();
 
   });

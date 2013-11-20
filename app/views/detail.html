@@ -1,9 +1,14 @@
 <div class="hero-unit">
 
     <h1>{{product.name}}</h1>
-    <br>
-    <p><img src="{{product.url}}" alt=""/></p>
 
+    <p><a class="btn" href="#/list"><i class="icon-chevron-left"></i></a></p>
+
+    <p class="text-right">{{product.price}} €</p>
+
+    <!--<p><img src="{{product.url}}" alt=""/></p>-->
+    <br>
     <p>{{product.desc}}</p>
+    <pre>{{formConfig.predicate | json}}</pre>
 
 </div>

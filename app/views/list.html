@@ -1,14 +1,18 @@
 <div class="hero-unit">
 
-    <h3>List</h3>
+    <h1>List</h1>
+
+    <select ng-model="formConfig.predicate" ng-options="opt.text for opt in formConfig.options"></select>
+
+    <br/>
 
     <ul>
-        <li ng-repeat="product in products">
+        <li ng-repeat="product in products | orderBy:formConfig.predicate.value:formConfig.reverse">
             <a href="#/detail/{{product.id}}">
 
-                <img src="{{product.url}}" alt=""/>
+                <!--<img src="{{product.url}}" alt=""/>-->
 
-                <span>{{product.name}}</span>
+                <span>{{product.name}} - {{product.price | currency:"€"}}</span>
             </a>
         </li>
     </ul>
