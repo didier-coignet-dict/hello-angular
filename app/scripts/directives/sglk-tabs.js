@@ -3,7 +3,7 @@
 angular.module('stApp').directive('sglkTabs', function () {
 
     return {
-        templateUrl: 'views/sglk-tabs.html',
+        templateUrl: 'views/directives/sglk-tabs.html',
         transclude: true,
         restrict: 'A',
         scope: {},
@@ -16,6 +16,7 @@ angular.module('stApp').directive('sglkTabs', function () {
 
                 angular.forEach($scope.panes, function(pane) {
                     pane.active = false;
+
                 });
 
                 pane.active = true;
@@ -40,7 +41,7 @@ angular.module('stApp').directive('sglkTabs', function () {
 
     return {
         require: '^sglkTabs',
-        templateUrl: 'views/sglk-tab.html',
+        templateUrl: 'views/directives/sglk-tab.html',
         transclude: true,
         restrict: 'A',
         scope: {

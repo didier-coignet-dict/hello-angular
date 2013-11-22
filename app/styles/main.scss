@@ -6,10 +6,10 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 /* Put your CSS here */
 html, body {
   margin: 20px;
+  background: #fafafa;
 }
 
 body {
-    background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -46,4 +46,31 @@ body {
     position: relative;
     margin-top: 0px;
   }
+}
+
+/**
+ * sglk-select demo
+ */
+select.ng-invalid,
+.selectStyle.ng-invalid .btn-dropdown {
+  border:1px solid red;
+}
+.hero-unit select {
+  margin-bottom: 0;
+}
+
+.selectStyle label {margin-bottom: 0;}
+
+.targetWidth {
+  display: inline-block;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.selectStyle {
+  outline: 0;
+}
+.selectStyle .btn-dropdown:focus,
+.selectStyle .btn-dropdown:active {
+  text-decoration: none;
 }

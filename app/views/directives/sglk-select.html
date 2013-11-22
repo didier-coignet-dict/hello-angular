@@ -1,0 +1,20 @@
+<span class="selectStyle" tabindex="-1" ng-blur="hideDrop()">
+
+    <span class="dropdown">
+
+        <a class="btn-dropdown button-big" href="" title="{{value || {} | formatName:textVar}}" ng-click="toggle()">
+            <span class="textWrap">{{value || {} | formatName:textVar}}</span><span class="picto down2"></span>
+        </a>
+
+        <span class="dropSelect" ng-class="{hide: !show}">
+
+            <span ng-repeat="o in options" ng-click="select(o)">
+                <input ng-show="isMultiple" type="checkbox" ng-checked="o[textVar] == value[textVar]" />
+                <label>{{o[textVar]}}</label>
+            </span>
+
+        </span>
+
+    </span>
+
+</span>

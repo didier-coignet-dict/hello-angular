@@ -16,7 +16,8 @@ angular.module('stApp').service('ListService', function ListService() {
         reverse: false
     };
 
-    priceFilter.predicate = priceFilter.options[1];
+    //priceFilter.predicate = priceFilter.options[1];
+    priceFilter.predicate = null;
 
     return {
         priceFilter: priceFilter

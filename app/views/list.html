@@ -2,9 +2,21 @@
 
     <h1>List</h1>
 
-    <select ng-model="formConfig.predicate" ng-options="opt.text for opt in formConfig.options"></select>
+    <form name="filterForm">
 
-    <br/>
+        <p>
+            <!-- angular select -->
+            <select ng-model="formConfig.predicate" ng-options="o.text for o in formConfig.options" required name="ngSelectFilter" class="targetWidth"></select>
+            <small class="text-error" ng-show="filterForm.ngSelectFilter.$error.required">requis</small>
+        </p>
+
+        <p>
+            <!-- sglk-select -->
+            <span sglk-select ng-model="formConfig.predicate" data-options="formConfig.options" data-text-var="text" data-required data-name="sglkSelectFilter" class="targetWidth"></span>
+            <small class="text-error" ng-show="filterForm.sglkSelectFilter.$error.required">requis</small>
+        </p>
+
+    </form>
 
     <ul>
         <li ng-repeat="product in products | orderBy:formConfig.predicate.value:formConfig.reverse">
@@ -16,5 +28,7 @@
             </a>
         </li>
     </ul>
+
+    <pre><small>{{formConfig | json}}</small></pre>
 
 </div>
