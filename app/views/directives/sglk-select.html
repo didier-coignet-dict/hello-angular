@@ -1,4 +1,4 @@
-<span class="selectStyle" tabindex="-1" ng-blur="hideDrop()">
+<span class="selectStyle" tabindex="-1" ng-blur="hideDrop()" ng-keydown="keyDownHandler($event)">
 
     <span class="dropdown">
 
@@ -8,10 +8,13 @@
 
         <span class="dropSelect" ng-class="{hide: !show}">
 
-            <span ng-repeat="o in options" ng-click="select(o)">
+            <!--<span sglk-option ng-repeat="o in options" ng-click="select(o)"></span>-->
+
+            <span ng-repeat="o in options" ng-click="select(o)" ng-class="{focusOn : hasFocus($index)}">
                 <input ng-show="isMultiple" type="checkbox" ng-checked="o[textVar] == value[textVar]" />
                 <label>{{o[textVar]}}</label>
             </span>
+
 
         </span>
 

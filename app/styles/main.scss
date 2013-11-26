@@ -57,6 +57,7 @@ select.ng-invalid,
 }
 .hero-unit select {
   margin-bottom: 0;
+  color: #000;
 }
 
 .selectStyle label {margin-bottom: 0;}
@@ -73,4 +74,11 @@ select.ng-invalid,
 .selectStyle .btn-dropdown:focus,
 .selectStyle .btn-dropdown:active {
   text-decoration: none;
+}
+
+/**
+ * selection option focused
+ */
+.focusOn label {
+  background: #b6dbf8;
 }

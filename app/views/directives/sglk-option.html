@@ -1,6 +1,7 @@
-<span ng-transclude ng-click="select()">
+<span ng-class="{focusOn: focus}">
+<!--<span ng-transclude>-->
 
-    <input ng-show="isMultiple" type="checkbox" ng-checked="o.value == value.value" />
+    <input ng-show="isMultiple" type="checkbox" ng-checked="o[textVar] == value[textVar]" />
     <label>{{o[textVar]}}</label>
 
 </span>
