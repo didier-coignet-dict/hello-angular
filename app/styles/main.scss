@@ -1,6 +1,11 @@
+@import 'compass/css3';
+
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
+/**
+ * CSS dependencies
+ */
 @import "bootstrap-sass/lib/bootstrap";
 
 /* Put your CSS here */

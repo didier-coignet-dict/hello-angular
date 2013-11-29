@@ -11,15 +11,35 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'app/bower_components/angular/angular.js',
-      'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/bower_components/angular-resource/angular-resource.js',
-      'app/bower_components/angular-cookies/angular-cookies.js',
-      'app/bower_components/angular-sanitize/angular-sanitize.js',
-      'app/scripts/*.js',
-      'app/scripts/**/*.js',
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
+        'app/bower_components/jquery/jquery.js',
+        'app/bower_components/angular/angular.js',
+
+        'app/bower_components/angular-i18n/angular-locale_fr-fr.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-affix.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-alert.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-dropdown.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-tooltip.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-modal.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-transition.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-button.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-popover.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-typeahead.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-carousel.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-scrollspy.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-collapse.js',
+        'app/bower_components/bootstrap-sass/js/bootstrap-tab.js',
+
+        'app/bower_components/angular-resource/angular-resource.js',
+        'app/bower_components/angular-route/angular-route.js',
+        'app/bower_components/angular-cookies/angular-cookies.js',
+        'app/bower_components/angular-sanitize/angular-sanitize.js',
+
+        'app/bower_components/angular-mocks/angular-mocks.js',
+
+        'app/scripts/*.js',
+        'app/scripts/**/*.js',
+        'test/mock/**/*.js',
+        'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
