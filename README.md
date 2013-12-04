@@ -1,7 +1,9 @@
 hello-angular
 =============
 
-Hello-angular<br>
+Personnal test project based on AngularJS<br>
+With Unit tests, custom select directive<br>
+Comming soon : e2e tests, WebSocket & WebRTC into angular
 
 Install & dev
 -------------
