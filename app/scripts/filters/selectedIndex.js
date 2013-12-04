@@ -5,14 +5,18 @@ angular.module('stApp').filter('selectedIndex', function () {
 
         var selected = -1;
 
-        angular.forEach(options, function(option, $index) {
+        if(value && !angular.isUndefined(value[text])) {
 
-            if(selected == -1 && option[text] == value[text]) {
+            angular.forEach(options, function(option, $index) {
 
-                selected = $index;
-            }
+                if(selected == -1 && option[text] == value[text]) {
 
-        });
+                    selected = $index;
+                }
+
+            });
+
+        }
 
         return selected;
 

@@ -84,6 +84,11 @@ select.ng-invalid,
 /**
  * selection option focused
  */
-.focusOn label {
+.dropdown .dropSelect input[type="checkbox"]:checked + label {
+  background:none;
+}
+
+.dropdown .focusOn input[type="checkbox"]:checked + label,
+.dropdown .focusOn label {
   background: #b6dbf8;
 }

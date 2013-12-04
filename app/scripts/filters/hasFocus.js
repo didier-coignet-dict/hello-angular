@@ -3,15 +3,21 @@
 angular.module('stApp').filter('hasFocus', function () {
     return function(options, $index, focused, value, textVar) {
 
-        var resp    = false,
-            option  = options[$index];
+        var resp    = false;
 
-        if($index === focused ||
-            value &&
-                focused < 0 &&
-                option[textVar] === value[textVar]) {
+        if(options) {
 
-            resp = true;
+            var option  = options[$index];
+
+            if($index === focused ||
+                (value &&
+                    focused < 0 &&
+                    option[textVar] === value[textVar])) {
+
+                resp = true;
+
+            }
+
         }
 
         return resp;
