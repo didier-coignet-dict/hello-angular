@@ -12,7 +12,7 @@
 
             <span ng-repeat="o in opts" ng-click="select($index)" ng-class="{focusOn : hasFocus($index)}">
                 <input ng-show="isMultiple" type="checkbox" ng-checked="o.active" tabindex="-1" />
-                <label>{{o.value[textVar]}}</label>
+                <label title="{{o.value[textVar]}}"><span class="owrap">{{o.value[textVar]}}</span></label>
             </span>
 
         </span>

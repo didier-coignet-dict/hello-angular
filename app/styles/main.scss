@@ -94,3 +94,11 @@ select.ng-invalid,
 .dropdown .focusOn label {
   background: #b6dbf8;
 }
+
+.dropSelect label .owrap {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

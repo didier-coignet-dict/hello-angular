@@ -113,7 +113,7 @@ describe('Directive: sglkSelect', function () {
             }];
         });
 
-        expect(element.find('.dropSelect input:checked').next().html()).toBe('Rouge');
+        expect(element.find('.dropSelect input:checked').next().text()).toBe('Rouge');
 
     }));
 
