@@ -88,6 +88,8 @@ select.ng-invalid,
   background:none;
 }
 
+.dropdown .dropSelect input[type="checkbox"]:checked + label:hover,
+.dropdown .dropSelect input[type="checkbox"]:checked + label:active,
 .dropdown .focusOn input[type="checkbox"]:checked + label,
 .dropdown .focusOn label {
   background: #b6dbf8;

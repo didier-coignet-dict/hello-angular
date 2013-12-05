@@ -3,7 +3,7 @@
 angular.module('stApp').service('ListService', function ListService() {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    var priceFilter = {
+    var productsFilter = {
 
         options: [{
             text    : 'Prix croissant',
@@ -13,14 +13,34 @@ angular.module('stApp').service('ListService', function ListService() {
             value   : '-price'
         }],
 
+        colorOptions: [{
+            text    : 'Rouge',
+            color   : 'red'
+        }, {
+            text    : 'Vert',
+            color   : 'green'
+        }, {
+            text    : 'Bleu',
+            color   : 'blue'
+        }],
+
         reverse: false
     };
 
-    //priceFilter.predicate = priceFilter.options[1];
-    priceFilter.predicate = null;
+    productsFilter.predicate       = {
+        text    : 'Prix croissant',
+        value   : '+price'
+    };
+    productsFilter.predicateColor  = [{
+        text    : 'Rouge',
+        color   : 'red'
+    }, {
+        text    : 'Vert',
+        color   : 'green'
+    }];
 
     return {
-        priceFilter: priceFilter
+        priceFilter: productsFilter
     };
 
 });

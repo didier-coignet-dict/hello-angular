@@ -2,7 +2,7 @@
 
 angular.module('stApp')
   .filter('formatName', function () {
-    return function(value, textVar) {
+    return function(value, index) {
 
         var nbsp = '\u00A0';
 
@@ -12,9 +12,23 @@ angular.module('stApp')
 
             for (var i = 0, len = ar.length; i < len; i++) {
 
-                var item = angular.isString(ar[i]) ? ar[i] : ar[i][id];
+                var item;
 
-                item = item || nbsp;
+                if(angular.isString(ar[i])) {
+                    // is string
+
+                    item = ar[i] || nbsp;
+
+                } else if(angular.isString(ar[i][id])) {
+                    // is object
+
+                    item = ar[i][id] || nbsp;
+
+                } else {
+
+                    item = nbsp;
+
+                }
 
                 st = i ? st + ', ' + item : st + item;
 
@@ -25,21 +39,26 @@ angular.module('stApp')
         };
 
         var ret;
-        if(value && value[textVar] && angular.isArray(value[textVar])) {
 
-            ret = arrayToString(value[textVar]);
+        if(angular.isUndefined(value)) {
 
-        } else if(value && value[textVar]) {
-
-            ret = value[textVar];
-
-        } else if(angular.isArray(value)) {
-
-            ret = arrayToString(value, textVar);
+            ret = nbsp;
 
         } else if(angular.isString(value)) {
+            // is string
 
-            ret = value;
+            ret = value || nbsp;
+
+        } else if(angular.isString(index) && !angular.isUndefined(value[index]) && angular.isString(value[index])) {
+            // is object & value is string
+
+            ret = value[index] || nbsp;
+
+        } else if(angular.isArray(value) && value.length) {
+            // is array
+
+            // index test is done in arrayToString function
+            ret = arrayToString(value, index);
 
         } else {
 

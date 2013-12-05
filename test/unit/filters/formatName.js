@@ -5,104 +5,151 @@ describe('Filter: formatName', function () {
     // load the filter's module
     beforeEach(module('stApp'));
 
+    var formatName,
+        nbsp = '\u00A0';
+
     // initialize a new instance of the filter before each test
-    var formatName;
     beforeEach(inject(function ($filter) {
         formatName = $filter('formatName');
     }));
 
-    it('should return the value of object index"', function () {
+    it('should return the value"', function () {
 
-        var text    = 'index',
-            value   = {};
+        var value = 'not empty';
 
-        value[text] = 'not empty';
-
-        expect(formatName(value, text)).toBe(value[text]);
+        expect(formatName(value)).toBe(value);
 
     });
 
+    it('should return nbsp if value empty"', function () {
 
-    it('should return non breaking space if empty"', function () {
+        var value = '';
 
-        var text    = 'index',
-            value   = {};
-
-        value[text] = '';
-
-        expect(formatName(value, text)).toBe('\u00A0');
+        expect(formatName(value)).toBe(nbsp);
 
     });
 
-    it('should return non breaking space if index is null"', function () {
+    it('should return value1, value2, value3 if value is an array of strings"', function () {
 
-        var text = 'index';
-        var value = {};
+        var value = ['value1', 'value2', 'value3'];
 
-        value[text] = null;
-
-        expect(formatName(value, text)).toBe('\u00A0');
+        expect(formatName(value)).toBe('value1, value2, value3');
 
     });
 
-    it('should return non breaking space if index doesn\'t exist"', function () {
+    it('should return nbsp if value[index] is an empty string"', function () {
 
-        var text    = 'index',
-            value   = {};
+        var value = {}, index = 'index';
+        value[index] = '';
 
-        expect(formatName(value, text)).toBe('\u00A0');
-
-    });
-
-    it('should return non breaking space if value doesn\'t exist"', function () {
-
-        var value   = null,
-            text    = null;
-
-        expect(formatName(value, text)).toBe('\u00A0');
+        expect(formatName(value, index)).toBe(nbsp);
 
     });
 
-    it('should return value of value var if is a string', function () {
+    it('should return value of value[index] if is not empty string"', function () {
 
-        var text    = null,
-            value   = 'test';
+        var value = {}, index = 'index';
+        value[index] = 'not empty';
 
-        expect(formatName(value, text)).toBe(value);
-
-    });
-
-
-    it('should return value1, value2, ... if value[text] is an array of values', function () {
-
-        var text    = 'index',
-            value   = {};
-
-        value[text] = ['value1', 'value2', 'value3'];
-
-        expect(formatName(value, text)).toBe('value1, value2, value3');
+        expect(formatName(value, index)).toBe(value[index]);
 
     });
 
-    it('should return value1, value2, ... if value is an array of values', function () {
+    it('should return value1, value2... if is an array of value[index] objects"', function () {
 
-        var text    = null,
-            value   = ['value1', 'value2', 'value3'];
+        var value = [], index = 'index';
 
-        expect(formatName(value, text)).toBe('value1, value2, value3');
+        value = [{
+            index: 'value1'
+        },{
+            index: 'value2'
+        },{
+            index: 'value3'
+        }];
+
+        expect(formatName(value, index)).toBe('value1, value2, value3');
 
     });
 
-    it('should return value1, value2, ... if value is an array of object values', function () {
+    it('should return value1, nbsp, value3 if is an array of value[index] objects with one item have an empty string"', function () {
 
-        var text    = 'index',
-            value   = [];
+        var value = [], index = 'index';
 
-        value.push({index: 'value1'});
-        value.push({index: 'value2'});
-        value.push({index: 'value3'});
+        value = [{
+            index: 'value1'
+        },{
+            index: ''
+        },{
+            index: 'value3'
+        }];
 
-        expect(formatName(value, text)).toBe('value1, value2, value3');
+        expect(formatName(value, index)).toBe('value1, ' + nbsp + ', value3');
+
+    });
+
+    it('should return value1, nbsp, value3 if is an array of value[index] objects with one empty item"', function () {
+
+        var value = [], index = 'index';
+
+        value = [{
+            index: 'value1'
+        },{
+
+        },{
+            index: 'value3'
+        }];
+
+        expect(formatName(value, index)).toBe('value1, ' + nbsp + ', value3');
+
+    });
+
+    it('should return value1, nbsp, value3 if is an array of value[index] objects with one item have a function"', function () {
+
+        var value = [], index = 'index';
+
+        value = [{
+            index: 'value1'
+        },{
+            index: function() {}
+        },{
+            index: 'value3'
+        }];
+
+        expect(formatName(value, index)).toBe('value1, ' + nbsp + ', value3');
+
+    });
+
+    it('should return value1, nbsp, value3 if is an array of value[index] objects with one item have a other not empty object"', function () {
+
+        var value = [], index = 'index';
+
+        value = [{
+            index: 'value1'
+        },{
+            index: {index: 'test'}
+        },{
+            index: 'value3'
+        }];
+
+        expect(formatName(value, index)).toBe('value1, ' + nbsp + ', value3');
+
+    });
+
+    it('should return nbsp, nbsp, nbsp if is an array of undefined indexes"', function () {
+
+        var value = [], index = 'index';
+
+        value = [{},{},{}];
+
+        expect(formatName(value, index)).toBe(nbsp + ', ' + nbsp + ', ' + nbsp);
+
+    });
+
+    it('should return nbsp if is an empty array"', function () {
+
+        var value = [];
+
+        expect(formatName(value)).toBe(nbsp);
 
     });
 

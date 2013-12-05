@@ -8,159 +8,277 @@
  * @fileOverview Custom select directive
  */
 
-angular.module('stApp')
-    .controller('SglkSelectController', ['$scope', '$filter', 'hasFocusFilter', 'selectedIndexFilter',
-        function($scope, $filter, hasFocusFilter, selectedIndexFilter) {
+angular.module('stApp').directive('sglkSelect', function () {
 
-        // dropdown list visibility
-        $scope.show = false;
+        return {
+            templateUrl : 'views/directives/sglk-select.html',
+            restrict    : 'A',
+            replace     : true,
+            scope: {
+                options     : '=',
+                value       : '=ngModel',
+                textVar     : '@',
+                multiple    : '='
+            },
 
-        // toggle dropdown list
-        $scope.toggle = function() {
+            controller: function($scope, $filter, hasFocusFilter, selectedIndexFilter) {
 
-            $scope.show ? $scope.hideDrop() : $scope.showDrop();
+                var self = this;
+                $scope.isMultiple = false;
+                $scope.opts = [];
 
-        };
+                this.cloneOptionsFilter = function(options) {
 
-        // hide dropdown list
-        $scope.hideDrop = function() {
+                    var opts = [];
 
-            $scope.show = false;
+                    angular.forEach(options, function(option) {
 
-            // reset focused index
-            $scope.focused = -1;
+                        opts.push({
+                            active  : false,
+                            value   : option
+                        });
 
-        };
+                    });
 
-        // show dropdown list
-        $scope.showDrop = function() {
+                    return opts;
+                };
 
-            $scope.show = true;
+                // clone options into opts
+                $scope.opts = self.cloneOptionsFilter($scope.options);
 
-            // set focused index based on a filter of selected option
-            if($scope.value) {
+                $scope.init = true;
 
-                $scope.focused = selectedIndexFilter($scope.value, $scope.options, $scope.textVar);
+                // watch options change to update opts
+                $scope.$watch('options', function(value) {
 
-            }
+                    // reset opts content
+                    $scope.opts = self.cloneOptionsFilter(value);
 
-        };
+                    // reset value if not initializing
+                    $scope.value = $scope.init ? $scope.value : null;
 
-        // simple select item
-        $scope.select = function(clicked) {
+                    $scope.init = false;
 
-            // set value > ngModel
-            if(clicked) {
-                $scope.value = clicked;
-            }
+                }, true);
 
-            // hide dropdown list
-            $scope.hideDrop();
+                // sync selected values in value var with opts
+                this.syncValues = function(values, options) {
 
-        };
+                    var opts = angular.copy(options);
 
-        // init selected item
-        $scope.focused = -1;
+                    angular.forEach(opts, function(option) {
 
-        $scope.hasFocus = function($index) {
+                        option.active = false;
 
-            return hasFocusFilter($scope.options,
-                $index,
-                $scope.focused,
-                $scope.value,
-                $scope.textVar);
+                        angular.forEach(values, function(value) {
 
-        };
+                            // seach for matching option
+                            option.active = angular.equals(option.value, value) ? true : option.active;
 
-        $scope.selectFocused = function() {
+                        });
 
-            $scope.select($scope.options[$scope.focused]);
+                    });
 
-        };
+                    return opts;
 
-        $scope.focusNext = function() {
+                };
 
-            $scope.focused = $scope.focused + 1 < $scope.options.length ? $scope.focused + 1 : 0;
+                // observe value changes for two ways data binding
+                $scope.$watch('value', function(value) {
 
-        };
+                    $scope.opts = self.syncValues(value, $scope.opts);
 
-        $scope.focusPrev = function() {
+                });
 
-            $scope.focused = $scope.focused - 1 >= 0  ? $scope.focused - 1 : $scope.options.length - 1;
+                // dropdown list visibility
+                $scope.show = false;
 
-        };
+                // toggle dropdown list
+                $scope.toggle = function() {
 
-        $scope.keyDownHandler = function(e) {
+                    $scope.show ? $scope.hideDrop() : $scope.showDrop();
 
-            // catch arrow navigation
-            switch (e.keyCode) {
+                };
 
-                case 27:// Escape key
+                // hide dropdown list
+                $scope.hideDrop = function() {
 
-                    e.preventDefault();
-                    $scope.hideDrop();
+                    $scope.show = false;
 
-                    break;
+                    // reset focused index
+                    $scope.focused = -1;
 
-                case 9:// TAB key
+                };
 
-                    $scope.hideDrop();
+                // show dropdown list
+                $scope.showDrop = function() {
 
-                    break;
+                    $scope.show = true;
 
-                case 13:// Enter key
+                    // set focused index based on a filter of selected option
+                    if($scope.value) {
 
-                    e.preventDefault();
-                    // if drop show
-                    if($scope.show && $scope.focused > -1) {
-
-                        $scope.selectFocused();
-
-                    } else if($scope.show) {
-
-                        $scope.hideDrop();
-
-                    } else {
-
-                        $scope.showDrop();
+                        $scope.focused = selectedIndexFilter($scope.value, $scope.options, $scope.textVar);
 
                     }
 
-                    break;
+                };
 
-                case 38:// up arrow key
+                // dispatch item click in simple or multiple case
+                $scope.select = function(index) {
 
-                    e.preventDefault();
-                    $scope.focusPrev();
+                    $scope.isMultiple ? $scope.selectMulti(index) : $scope.selectSimple(index);
 
-                    break;
+                };
 
-                case 40:// down arrow key
+                // simple select item
+                $scope.selectSimple = function(index) {
 
-                    e.preventDefault();
-                    $scope.focusNext();
+                    // set value > ngModel
+                    if($scope.opts[index]) {
+                        $scope.value = $scope.opts[index].value;
+                    }
 
-                    break;
+                    // hide dropdown list
+                    $scope.hideDrop();
+
+                };
+
+                this.getActiveFilter = function(opts) {
+
+                    var actives = [];
+
+                    angular.forEach(opts, function(opt) {
+
+                        if(opt.active) {
+                            actives.push(opt.value);
+                        }
+
+                    });
+
+                    return actives.length ? actives : null;
+
+                };
+
+                // select item in multiselect
+                $scope.selectMulti = function(index) {
+
+                    // set active param
+                    if($scope.opts[index]) {
+
+                        $scope.opts[index].active = !$scope.opts[index].active;
+
+                    }
+
+                    $scope.value = self.getActiveFilter($scope.opts);
+
+                };
+
+                // init selected item
+                $scope.focused = -1;
+
+                $scope.hasFocus = function($index) {
+
+                    return hasFocusFilter($scope.options,
+                        $index,
+                        $scope.focused,
+                        $scope.value,
+                        $scope.textVar);
+
+                };
+
+                $scope.selectFocused = function() {
+
+                    $scope.select($scope.options[$scope.focused]);
+
+                };
+
+                $scope.focusNext = function() {
+
+                    $scope.focused = $scope.focused + 1 < $scope.options.length ? $scope.focused + 1 : 0;
+
+                };
+
+                $scope.focusPrev = function() {
+
+                    $scope.focused = $scope.focused - 1 >= 0  ? $scope.focused - 1 : $scope.options.length - 1;
+
+                };
+
+                $scope.keyDownHandler = function(e) {
+
+                    // catch arrow navigation
+                    switch (e.keyCode) {
+
+                        case 27:// Escape key
+
+                            e.preventDefault();
+                            $scope.hideDrop();
+
+                            break;
+
+                        case 9:// TAB key
+
+                            $scope.hideDrop();
+
+                            break;
+
+                        case 13:// Enter key
+
+                            e.preventDefault();
+                            // if drop show
+                            if($scope.show && $scope.focused > -1) {
+
+                                //$scope.selectFocused();
+                                $scope.select($scope.focused);
+
+                            } else if($scope.show) {
+
+                                $scope.hideDrop();
+
+                            } else {
+
+                                $scope.showDrop();
+
+                            }
+
+                            break;
+
+                        case 38:// up arrow key
+
+                            e.preventDefault();
+                            $scope.focusPrev();
+
+                            break;
+
+                        case 40:// down arrow key
+
+                            e.preventDefault();
+                            $scope.focusNext();
+
+                            break;
+                    }
+
+                }
+
+            },
+            link: function(scope, element, attrs, ctrl) {
+
+                scope.isMultiple = !angular.isUndefined(attrs.multiple);
+
+                var $dropSelect = element.find('.dropSelect');
+
+                // scroll drop down top when rebuild options list
+                scope.$watch('options', function() {
+
+                    $dropSelect.scrollTop(0);
+
+                }, true);
+
             }
-
-        }
-
-    }]).directive('sglkSelect', function () {
-
-    return {
-        templateUrl : 'views/directives/sglk-select.html',
-        restrict    : 'A',
-        replace     : true,
-        scope: {
-            options     : '=',
-            value       : '=ngModel',
-            textVar     : '@'
-        },
-
-        controller: 'SglkSelectController'
-    };
-
-})/*.directive('sglkOption', function () {
+        };
+    }
+)/*.directive('sglkOption', function () {
 
     return {
         templateUrl: 'views/directives/sglk-option.html',

@@ -40,7 +40,7 @@ describe('Directive: sglkSelect', function () {
         element = $compile(element)(scope);
     }));
 
-    it('should initiate element with selected option from 3 choices', inject(function () {
+    it('should initiate element with a selected option from 3 choices', inject(function () {
 
         scope.$digest();
 

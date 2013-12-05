@@ -1,6 +1,8 @@
 <span class="selectStyle" tabindex="-1" ng-blur="hideDrop()" ng-keydown="keyDownHandler($event)">
 
-    <span class="dropdown">
+    <!--<span ng-show="debug" style="position: absolute;top:10px;right:10px;"><pre><small>{{counter | json}}</small></pre></span>-->
+
+    <span class="dropdown" ng-class="{multiselectStyle: isMultiple}">
 
         <a class="btn-dropdown button-big" href="" title="{{value || {} | formatName:textVar}}" ng-click="toggle()">
             <span class="textWrap">{{value || {} | formatName:textVar}}</span><span class="picto down2"></span>
@@ -8,13 +10,10 @@
 
         <span class="dropSelect" ng-class="{hide: !show}">
 
-            <!--<span sglk-option ng-repeat="o in options" ng-click="select(o)"></span>-->
-
-            <span ng-repeat="o in options" ng-click="select(o)" ng-class="{focusOn : hasFocus($index)}">
-                <input ng-show="isMultiple" type="checkbox" ng-checked="o[textVar] == value[textVar]" />
-                <label>{{o[textVar]}}</label>
+            <span ng-repeat="o in opts" ng-click="select($index)" ng-class="{focusOn : hasFocus($index)}">
+                <input ng-show="isMultiple" type="checkbox" ng-checked="o.active" tabindex="-1" />
+                <label>{{o.value[textVar]}}</label>
             </span>
-
 
         </span>
 
