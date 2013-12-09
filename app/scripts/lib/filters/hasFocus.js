@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('stApp').filter('hasFocus', function () {
+angular.module('lib.filter').filter('hasFocus', function () {
     return function(options, $index, focused, value, textVar) {
 
         var resp    = false;

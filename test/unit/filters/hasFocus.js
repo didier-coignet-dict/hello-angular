@@ -3,7 +3,7 @@
 describe('Filter: hasFocus', function () {
 
     // load the filter's module
-    beforeEach(module('stApp'));
+    beforeEach(module('lib.filter'));
 
     var hasFocus,
         options = [{

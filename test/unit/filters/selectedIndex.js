@@ -3,7 +3,7 @@
 describe('Filter: selectedIndex', function () {
 
     // load the filter's module
-    beforeEach(module('stApp'));
+    beforeEach(module('lib.filter'));
 
     var selectedIndex,
         text    = 'index',

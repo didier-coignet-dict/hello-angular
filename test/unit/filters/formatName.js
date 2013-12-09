@@ -3,7 +3,7 @@
 describe('Filter: formatName', function () {
 
     // load the filter's module
-    beforeEach(module('stApp'));
+    beforeEach(module('lib.filter'));
 
     var formatName,
         nbsp = '\u00A0';

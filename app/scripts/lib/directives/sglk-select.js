@@ -4,11 +4,11 @@
  * @license Tous droits réservés
  * @copyright DICT.fr
  * @author Yann Lombard (yann.lombard@sogelink.fr)
- * @module stApp
+ * @module lib
  * @fileOverview Custom select directive
  */
 
-angular.module('stApp').directive('sglkSelect', function () {
+angular.module('lib.directive').directive('sglkSelect', function () {
 
         return {
             templateUrl : 'views/directives/sglk-select.html',

@@ -4,7 +4,7 @@
 describe('Directive: sglkSelect', function () {
 
     // load the directive's module
-    beforeEach(module('stApp'));
+    beforeEach(module('lib.directive'));
     beforeEach(module('views/directives/sglk-select.html', 'views/directives/sglk-select.html'));
 
     var element,

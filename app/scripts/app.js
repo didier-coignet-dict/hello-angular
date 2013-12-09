@@ -4,7 +4,8 @@ angular.module('stApp', [
     'ngRoute',
     'ngCookies',
     'ngResource',
-    'seo'/*,
+    'seo',
+    'lib'/*,
     'ngSanitize'*/
 
 ]).config(function ($routeProvider) {

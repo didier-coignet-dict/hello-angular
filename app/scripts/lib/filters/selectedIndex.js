@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('stApp').filter('selectedIndex', function () {
+angular.module('lib.filter').filter('selectedIndex', function () {
     return function(value, options, text) {
 
         var selected = -1;

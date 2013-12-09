@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('stApp')
-  .filter('formatName', function () {
+angular.module('lib.filter').filter('formatName', function () {
     return function(value, index) {
 
         var nbsp = '\u00A0';
@@ -69,4 +68,4 @@ angular.module('stApp')
         return ret;
 
     };
-  });
+});
