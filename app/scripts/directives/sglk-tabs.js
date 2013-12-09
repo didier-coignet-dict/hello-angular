@@ -3,7 +3,7 @@
 angular.module('stApp').directive('sglkTabs', function () {
 
     return {
-        templateUrl: 'views/directives/sglk-tabs.html',
+        templateUrl: 'views/sglk-tabs.html',
         transclude: true,
         restrict: 'A',
         scope: {},
@@ -41,7 +41,7 @@ angular.module('stApp').directive('sglkTabs', function () {
 
     return {
         require: '^sglkTabs',
-        templateUrl: 'views/directives/sglk-tab.html',
+        templateUrl: 'views/sglk-tab.html',
         transclude: true,
         restrict: 'A',
         scope: {

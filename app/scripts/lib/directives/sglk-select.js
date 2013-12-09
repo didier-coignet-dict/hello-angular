@@ -11,7 +11,7 @@
 angular.module('lib.directive').directive('sglkSelect', function () {
 
         return {
-            templateUrl : 'views/directives/sglk-select.html',
+            templateUrl : 'views/sglk-select.html',
             restrict    : 'A',
             replace     : true,
             scope: {

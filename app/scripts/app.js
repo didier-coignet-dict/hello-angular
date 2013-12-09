@@ -8,31 +8,29 @@ angular.module('stApp', [
     'lib'/*,
     'ngSanitize'*/
 
-]).config(function ($routeProvider) {
+    ]).config(function ($routeProvider, $locationProvider) {
 
-    $routeProvider/*.when('/', {
+        $locationProvider.html5Mode(true).hashPrefix('!');
 
-        templateUrl: 'views/login.html',
-        controller: 'MainCtrl'
+        $routeProvider.when('/', {
 
-    })*/.when('/', {
+            templateUrl: 'views/list.html',
+            controller: 'ListCtrl'
 
-        templateUrl: 'views/list.html',
-        controller: 'ListCtrl'
+        }).when('/list', {
 
-    }).when('/list', {
+            templateUrl: 'views/list.html',
+            controller: 'ListCtrl'
 
-        templateUrl: 'views/list.html',
-        controller: 'ListCtrl'
+        }).when('/detail/:id', {
 
-    }).when('/detail/:id', {
+            templateUrl: 'views/detail.html',
+            controller: 'DetailCtrl'
 
-        templateUrl: 'views/detail.html',
-        controller: 'DetailCtrl'
+        }).otherwise({
 
-    }).otherwise({
+                redirectTo: '/'
 
-            redirectTo: '/'
-
-    });
-});
+        });
+    }
+);

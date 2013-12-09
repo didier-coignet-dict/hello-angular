@@ -33,7 +33,7 @@
 
     <ul>
         <li ng-repeat="product in products | getValueFilter:formConfig.predicateColor:'color' | orderBy:formConfig.predicate.value:formConfig.reverse">
-            <a href="#/detail/{{product.id}}">
+            <a href="#!/detail/{{product.id}}">
 
                 <!--<img src="{{product.url}}" alt=""/>-->
 
@@ -42,6 +42,6 @@
         </li>
     </ul>
 
-    <pre style="position: absolute;top:10px;left:10px;"><small>{{formConfig | json}}</small></pre>
+    <!--<pre style="position: absolute;top:10px;left:10px;"><small>{{formConfig | json}}</small></pre>-->
 
 </div>

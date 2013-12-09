@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('stApp').controller('MainCtrl', function ($scope, UserService, $location) {
+angular.module('stApp').controller('MainCtrl', function ($scope, UserService) {
 
     $scope.user = 'ylombard@sqli.com';
     $scope.auth = false;
