@@ -127,12 +127,16 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                 // show dropdown list
                 $scope.showDrop = function() {
 
-                    $scope.show = true;
+                    if(!$scope.isDisabled) {
 
-                    // set focused index based on a filter of selected option
-                    if($scope.value) {
+                        $scope.show = true;
 
-                        $scope.focused = selectedIndexFilter($scope.value, $scope.options, $scope.textVar);
+                        // set focused index based on a filter of selected option
+                        if($scope.value) {
+
+                            $scope.focused = selectedIndexFilter($scope.value, $scope.options, $scope.textVar);
+
+                        }
 
                     }
 
@@ -291,9 +295,10 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                 }
 
             },
-            link: function(scope, element, attrs, ctrl) {
+            link: function(scope, element, attrs) {
 
-                scope.isMultiple = !angular.isUndefined(attrs.multiple);
+                scope.isMultiple    = !angular.isUndefined(attrs.multiple);
+                scope.isDisabled    = !angular.isUndefined(attrs.disabled);
 
                 var $dropSelect = element.find('.dropSelect');
 
