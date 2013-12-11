@@ -19,7 +19,7 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                 value       : '=ngModel',
                 textVar     : '@',
                 multiple    : '=',
-                maxlength   : '=sglkMaxlength'
+                maxlength   : '=arrayMaxlength'
             },
 
             controller: function($scope, $filter, hasFocusFilter, selectedIndexFilter) {

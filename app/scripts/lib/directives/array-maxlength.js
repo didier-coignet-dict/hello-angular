@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lib.directive').directive('sglkMaxlength', function () {
+angular.module('lib.directive').directive('arrayMaxlength', function () {
 
     return {
         require: 'ngModel',
@@ -12,14 +12,14 @@ angular.module('lib.directive').directive('sglkMaxlength', function () {
 
                 var isValid = false;
 
-                var target = scope.$eval(attrs.sglkMaxlength);
+                var target = scope.$eval(attrs.arrayMaxlength);
                 var test = angular.isArray(value) || angular.isString(value) ? value : [];
 
                 if(test.length <= target) {
                     isValid = true;
                 }
 
-                ctrl.$setValidity('sglkMaxlength', isValid);
+                ctrl.$setValidity('arrayMaxlength', isValid);
 
                 return value;
 
