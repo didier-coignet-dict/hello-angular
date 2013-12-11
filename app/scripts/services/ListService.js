@@ -24,7 +24,8 @@ angular.module('stApp').service('ListService', function ListService() {
             color   : 'blue'
         }],
 
-        reverse: false
+        reverse     : false,
+        maxlength   : 2
     };
 
     productsFilter.predicate       = {

@@ -2,13 +2,22 @@
 
     <h1>List</h1>
 
-    <input ng-model="formConfig.colorOptions[0].text"/>
+    <!--<input ng-model="formConfig.colorOptions[0].text"/>-->
 
     <form name="filterForm">
 
+        <input ng-model="formConfig.maxlength" data-maxlength="5" name="test1" sglk-maxlength/>
+        <small class="text-error" ng-show="filterForm.test1.$error.maxlength">test trop long<br></small>
+
         <p>
 
-            <span sglk-select ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" data-text-var="text" multiple data-name="sglkSelectColorFilter1" class="targetWidth"></span>
+            <span sglk-select sglk-maxlength="formConfig.maxlength" ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" data-text-var="text" multiple data-name="sglkSelectColorFilter1" class="targetWidth"></span>
+
+            <small class="text-info" ng-show="formConfig.predicateColor.length < formConfig.maxlength">{{formConfig.maxlength}} options maxi<br></small>
+            <small class="text-success" ng-show="formConfig.predicateColor.length == formConfig.maxlength">maximum atteind<br></small>
+            <small class="text-error" ng-show="filterForm.sglkSelectColorFilter1.$error.sglkMaxlength">trop d'options cochées cool<br></small>
+
+            <div>{{filterForm.sglkSelectColorFilter1.$error.maxlength}}</div>
 
             <span sglk-select ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" required data-text-var="text" multiple data-name="sglkSelectColorFilter" class="targetWidth"></span>
             <small class="text-error" ng-show="filterForm.sglkSelectColorFilter.$error.required">requis</small>

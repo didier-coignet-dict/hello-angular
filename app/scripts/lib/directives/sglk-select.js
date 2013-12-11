@@ -18,7 +18,8 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                 options     : '=',
                 value       : '=ngModel',
                 textVar     : '@',
-                multiple    : '='
+                multiple    : '=',
+                maxlength   : '=sglkMaxlength'
             },
 
             controller: function($scope, $filter, hasFocusFilter, selectedIndexFilter) {
@@ -46,7 +47,7 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                 // clone options into opts
                 $scope.opts = self.cloneOptionsFilter($scope.options);
 
-                $scope.init = true;
+                var optsInit = true;
 
                 // watch options change to update opts
                 $scope.$watch('options', function(value) {
@@ -55,9 +56,9 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                     $scope.opts = self.cloneOptionsFilter(value);
 
                     // reset value if not initializing
-                    $scope.value = $scope.init ? $scope.value : null;
+                    $scope.value = optsInit ? $scope.value : [];
 
-                    $scope.init = false;
+                    optsInit = false;
 
                 }, true);
 
@@ -89,6 +90,18 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                     $scope.opts = self.syncValues(value, $scope.opts);
 
                 });
+
+                // observe maxlength change
+                var maxlengthInit = true;
+                $scope.$watch('maxlength', function() {
+
+                    // reset value if not initializing
+                    $scope.value = maxlengthInit ? $scope.value : [];
+
+                    maxlengthInit = false;
+
+                }, true);
+
 
                 // dropdown list visibility
                 $scope.show = false;
@@ -166,8 +179,23 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                     // set active param
                     if($scope.opts[index]) {
 
-                        $scope.opts[index].active = !$scope.opts[index].active;
+                        var value = false;
 
+                        // if activate option & not enought options
+                        var maxlength   = parseInt($scope.maxlength),
+                            valueLength = angular.isArray($scope.value) ? $scope.value.length : 0;
+
+                        if(angular.isUndefined($scope.maxlength) && !$scope.opts[index].active ||
+
+                            !angular.isUndefined($scope.maxlength) &&
+                            maxlength > valueLength &&
+                            !$scope.opts[index].active) {
+
+                            value = true;
+
+                        }
+
+                        $scope.opts[index].active = value;
                     }
 
                     $scope.value = self.getActiveFilter($scope.opts);
