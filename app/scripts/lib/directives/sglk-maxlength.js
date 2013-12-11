@@ -7,43 +7,29 @@ angular.module('lib.directive').directive('sglkMaxlength', function () {
         restrict: 'A',
         link: function postLink(scope, element, attrs, ctrl) {
 
-            ctrl.$parsers.unshift(function(value) {
+            // check value length
+            var check = function(value) {
 
-                console.log('value', value);
+                var isValid = false;
 
-                var validity = undefined;
-                /*scope.isLess    = false;
-                scope.isMore    = false;
-                scope.isEqual   = false;
+                var target = scope.$eval(attrs.sglkMaxlength);
+                var test = angular.isArray(value) || angular.isString(value) ? value : [];
 
-                if(angular.isArray(value)) {
+                if(test.length <= target) {
+                    isValid = true;
+                }
 
-                    *//*if(scope.) {
+                ctrl.$setValidity('sglkMaxlength', isValid);
 
-                    }*//*
+                return value;
 
-                    validity = value;
-                }*/
+            };
 
-                return validity;
+            // DOM to model validation
+            ctrl.$parsers.unshift(check);
 
-                /*scope.pwdValidLength = (viewValue && viewValue.length >= 8 ? 'valid' : undefined);
-                scope.pwdHasLetter = (viewValue && /[A-z]/.test(viewValue)) ? 'valid' : undefined;
-                scope.pwdHasNumber = (viewValue && /\d/.test(viewValue)) ? 'valid' : undefined;
-
-                if(scope.pwdValidLength && scope.pwdHasLetter && scope.pwdHasNumber) {
-                    ctrl.$setValidity('pwd', true);
-                    //elm.$setValidity('pwd', true); //<-- I WANT THIS TO WORK! (or something like it)
-
-                    return viewValue;
-                } else {
-                    ctrl.$setValidity('pwd', false);
-                    //elm.$setValidity('pwd', false); //<-- I WANT THIS TO WORK! (or something like it)
-
-                    return undefined;
-                }*/
-
-            });
+            // model to DOM validation
+            ctrl.$formatters.unshift(check);
 
         }
     };

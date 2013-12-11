@@ -6,24 +6,20 @@
 
     <form name="filterForm">
 
-        <input ng-model="formConfig.maxlength" data-maxlength="5" name="test1" sglk-maxlength/>
+        <input ng-model="formConfig.maxlength" name="test1" ng-maxlength="formConfig.maxlength"/>
         <small class="text-error" ng-show="filterForm.test1.$error.maxlength">test trop long<br></small>
 
         <p>
 
             <span sglk-select sglk-maxlength="formConfig.maxlength" ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" data-text-var="text" multiple data-name="sglkSelectColorFilter1" class="targetWidth"></span>
 
+            <!-- status messsages -->
             <small class="text-info" ng-show="formConfig.predicateColor.length < formConfig.maxlength">{{formConfig.maxlength}} options maxi<br></small>
-            <small class="text-success" ng-show="formConfig.predicateColor.length == formConfig.maxlength">maximum atteind<br></small>
-            <small class="text-error" ng-show="filterForm.sglkSelectColorFilter1.$error.sglkMaxlength">trop d'options cochées cool<br></small>
-
-            <div>{{filterForm.sglkSelectColorFilter1.$error.maxlength}}</div>
+            <small class="text-success" ng-show="formConfig.predicateColor.length == formConfig.maxlength">maximum atteint<br></small>
+            <small class="text-error" ng-show="filterForm.sglkSelectColorFilter1.$error.sglkMaxlength">limité à {{formConfig.maxlength}} options<br></small>
 
             <span sglk-select ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" required data-text-var="text" multiple data-name="sglkSelectColorFilter" class="targetWidth"></span>
             <small class="text-error" ng-show="filterForm.sglkSelectColorFilter.$error.required">requis</small>
-
-            <!--<select ng-model="formConfig.predicateColor" ng-options="o.text for o in formConfig.colorOptions" required name="sglkSelectColorFilter" class="targetWidth"></select>
-            <small class="text-error" ng-show="filterForm.ngSelectColorFilter.$error.required">requis</small>-->
 
         </p>
 
@@ -37,6 +33,8 @@
             <span sglk-select ng-model="formConfig.predicate" data-options="formConfig.options" data-text-var="text" data-required data-name="sglkSelectFilter" class="targetWidth"></span>
             <small class="text-error" ng-show="filterForm.sglkSelectFilter.$error.required">requis</small>
         </p>
+
+        <p ng-show="filterForm.$invalid">formulaire invalide</p>
 
     </form>
 

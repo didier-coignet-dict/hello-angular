@@ -56,7 +56,7 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                     $scope.opts = self.cloneOptionsFilter(value);
 
                     // reset value if not initializing
-                    $scope.value = optsInit ? $scope.value : [];
+                    $scope.value = optsInit ? $scope.value : null;
 
                     optsInit = false;
 
@@ -84,6 +84,7 @@ angular.module('lib.directive').directive('sglkSelect', function () {
 
                 };
 
+                var initValue = true;
                 // observe value changes for two ways data binding
                 $scope.$watch('value', function(value) {
 
@@ -96,7 +97,7 @@ angular.module('lib.directive').directive('sglkSelect', function () {
                 $scope.$watch('maxlength', function() {
 
                     // reset value if not initializing
-                    $scope.value = maxlengthInit ? $scope.value : [];
+                    $scope.value = maxlengthInit ? $scope.value : null;
 
                     maxlengthInit = false;
 
