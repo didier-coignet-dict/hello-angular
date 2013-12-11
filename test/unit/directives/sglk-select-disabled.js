@@ -61,4 +61,12 @@ describe('Directive: disabled sglkSelect', function () {
         expect(element.find('.dropSelect').hasClass('hide')).toEqual(true);
 
     }));
+
+    it('should main element has class sglk-disabled', inject(function () {
+
+        scope.$digest();
+
+        expect(element.hasClass('sglk-disabled')).toEqual(true);
+
+    }));
 });
