@@ -4,9 +4,9 @@ angular.module('stApp', [
     'ngRoute',
     'ngCookies',
     'ngResource',
-    'lib'/*,
-    'ngSanitize'*/
-
+    'lib',
+    'ngSanitize',
+    'i18n'
     ]).config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true).hashPrefix('!');
@@ -31,5 +31,4 @@ angular.module('stApp', [
                 redirectTo: '/'
 
         });
-    }
-);
+    });

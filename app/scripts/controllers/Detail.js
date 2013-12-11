@@ -1,13 +1,10 @@
 'use strict';
 
-angular.module('stApp')
-  .controller('DetailCtrl', function ($scope, $routeParams, $filter, ProductService, ListService) {
+angular.module('stApp').controller('DetailCtrl', function ($scope, $routeParams, $filter, ProductService, ListService, i18n, Page) {
 
-        $scope.testValue = 'test ok';
+    Page.setMeta(i18n.detail[$routeParams.id]);
 
-        $scope.product = ProductService.getById($routeParams.id);
-        $scope.formConfig = ListService.priceFilter;
+    $scope.product = ProductService.getById($routeParams.id);
+    $scope.formConfig = ListService.priceFilter;
 
-        //$scope.htmlReady();
-
-  });
+});
