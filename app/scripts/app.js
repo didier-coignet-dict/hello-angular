@@ -4,7 +4,6 @@ angular.module('stApp', [
     'ngRoute',
     'ngCookies',
     'ngResource',
-    'seo',
     'lib'/*,
     'ngSanitize'*/
 
