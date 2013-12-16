@@ -1,23 +1,27 @@
 angular.module('l10n-fr-fr', ['l10n']).config(['l10nProvider', function(l10n){
 
     l10n.add('fr-fr', 	{
+        translateTo: 'english',
         list: {
-            title: 'Hello Angular',
-            description: 'My AngularJS sandbox'
+            title: 'Bonjour Angular',
+            description: 'Mon bac à sable AngularJS'
         },
         detail: {
             'chaussures-vertes': {
                 title: 'Chaussures vertes',
-                description: 'description'
+                description: 'Description chaussures vertes'
             },
             'chaussures-rouges': {
                 title: 'Chaussures rouges',
-                description: 'description'
+                description: 'Description chaussures rouges'
             },
             'canodolly2': {
                 title: 'Canodoly',
-                description: 'description'
-            }
+                description: 'Description Canodoly'
+            },
+
+            'spec': 'Caractéristiques',
+            'test': 'Test FR'
         }
     });
 

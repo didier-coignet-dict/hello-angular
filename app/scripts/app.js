@@ -7,8 +7,11 @@ angular.module('stApp', [
     'lib',
     'ngSanitize',
     'l10n',
-    'l10n-fr-fr'
-    ]).config(function ($routeProvider, $locationProvider) {
+    'l10n-fr-fr',
+    'l10n-en-us'
+    ]).config(function ($routeProvider, $locationProvider, l10nProvider) {
+
+        l10nProvider.setLocale('en-us');
 
         $locationProvider.html5Mode(true).hashPrefix('!');
 

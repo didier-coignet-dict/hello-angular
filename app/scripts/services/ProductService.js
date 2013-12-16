@@ -1,58 +1,59 @@
 'use strict';
 
-angular.module('stApp')
-  .service('ProductService', function Productservice($filter) {
+angular.module('stApp').service('ProductService', function Productservice($filter, l10n) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-        var products = [
+    console.log('version', l10n.getLocale());
 
-            {
-                id      : 'chaussures-rouges',
-                name    : 'Produit rouge',
-                url     : 'http://www.hypebeast.com/image/2008/10/lupe-fiasco-product-red-converse-all-star-01.jpg',
-                desc    : 'lorem ipsum dolor sit amet consectetur adipiscing elit',
-                price   : 15,
-                color   : 'red'
-            },
+    var products = [
 
-            {
-                id      : 'chaussures-vertes',
-                name    : 'Produit vert',
-                url     : 'http://www.hypebeast.com/image/2008/10/lupe-fiasco-product-red-converse-all-star-01.jpg',
-                desc    : 'lorem ipsum dolor sit amet consectetur adipiscing elit',
-                price   : 10,
-                color   : 'green'
-            },
+        {
+            id      : 'chaussures-rouges',
+            name    : 'Produit rouge',
+            url     : 'http://www.hypebeast.com/image/2008/10/lupe-fiasco-product-red-converse-all-star-01.jpg',
+            desc    : 'lorem ipsum dolor sit amet consectetur adipiscing elit',
+            price   : 15,
+            color   : 'red'
+        },
 
-            {
-                id      : 'canodolly1',
-                name    : 'Canodolly bleu',
-                url     : 'http://www.ekit.co.uk/GalleryEntries/eCommerce_solutions_and_services/MedRes_Product-presentation-2.jpg?q=27012012153123',
-                desc    : 'Nam lacus felis, placerat sed est non, interdum imperdiet massa',
-                price   : 25,
-                color   : 'blue'
-            },
+        {
+            id      : 'chaussures-vertes',
+            name    : 'Produit vert',
+            url     : 'http://www.hypebeast.com/image/2008/10/lupe-fiasco-product-red-converse-all-star-01.jpg',
+            desc    : 'lorem ipsum dolor sit amet consectetur adipiscing elit',
+            price   : 10,
+            color   : 'green'
+        },
 
-            {
-                id      : 'canodolly2',
-                name    : 'Canodolly rouge',
-                url     : 'http://www.ekit.co.uk/GalleryEntries/eCommerce_solutions_and_services/MedRes_Product-presentation-2.jpg?q=27012012153123',
-                desc    : 'Nam lacus felis, placerat sed est non, interdum imperdiet massa',
-                price   : 20,
-                color   : 'red'
-            }
+        {
+            id      : 'canodolly1',
+            name    : 'Canodolly bleu',
+            url     : 'http://www.ekit.co.uk/GalleryEntries/eCommerce_solutions_and_services/MedRes_Product-presentation-2.jpg?q=27012012153123',
+            desc    : 'Nam lacus felis, placerat sed est non, interdum imperdiet massa',
+            price   : 25,
+            color   : 'blue'
+        },
+
+        {
+            id      : 'canodolly2',
+            name    : 'Canodolly rouge',
+            url     : 'http://www.ekit.co.uk/GalleryEntries/eCommerce_solutions_and_services/MedRes_Product-presentation-2.jpg?q=27012012153123',
+            desc    : 'Nam lacus felis, placerat sed est non, interdum imperdiet massa',
+            price   : 20,
+            color   : 'red'
+        }
 
 
-        ];
+    ];
 
-        return {
-            products : products,
+    return {
+        products : products,
 
-            getById: function(id) {
+        getById: function(id) {
 
-                return $filter('filter')(products, {id: id})[0];
+            return $filter('filter')(products, {id: id})[0];
 
-            }
-        };
+        }
+    };
 
-  });
+});

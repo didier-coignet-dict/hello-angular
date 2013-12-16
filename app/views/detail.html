@@ -6,7 +6,7 @@
 
     <div sglk-tabs>
 
-        <div sglk-tab text="Caractéristiques">
+        <div sglk-tab text="{{l10n.detail.spec}}">
 
             <!--<p><img src="{{product.url}}" alt=""/></p>-->
             <p class="text-right">{{product.price | currency}}</p>
@@ -15,7 +15,7 @@
 
         </div>
 
-        <div sglk-tab text="Test">
+        <div sglk-tab text="{{l10n.detail.test}}">
             <pre>{{formConfig.predicate | json}}</pre>
         </div>
 
