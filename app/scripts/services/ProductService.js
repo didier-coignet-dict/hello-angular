@@ -3,7 +3,7 @@
 angular.module('stApp').service('ProductService', function Productservice($filter, l10n) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    console.log('version', l10n.getLocale());
+    console.log('Version', l10n.getLocale());
 
     var products = [
 

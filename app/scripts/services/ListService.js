@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('stApp').service('ListService', function ListService() {
+angular.module('stApp').service('ListService', function ListService(l10n) {
     // AngularJS will instantiate a singleton by calling "new" on this function
+
+    console.log('Version', l10n.getLocale());
 
     var productsFilter = {
 
