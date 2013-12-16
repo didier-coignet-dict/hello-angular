@@ -5,7 +5,9 @@ angular.module('stApp', [
     'ngCookies',
     'ngResource',
     'lib',
-    'ngSanitize'
+    'ngSanitize',
+    'l10n',
+    'l10n-fr-fr'
     ]).config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true).hashPrefix('!');
