@@ -1,0 +1,59 @@
+<div class="hero-unit">
+
+    <a class="pull-right btn small-btn" href="" ng-click="translate()"><i class="icon-random icon-align-right"></i> {{l10n.translateTo}}</a>
+    
+    <h1>{{l10n.list.title}}</h1>
+
+    <!--<input ng-model="formConfig.colorOptions[0].text"/>-->
+
+    <form name="filterForm">
+
+        <p class="text-error text-right" ng-show="filterForm.$invalid">formulaire invalide</p>
+        <p ng-show="!filterForm.$invalid">&nbsp;</p>
+
+        <p>
+            <label>Color max length</label>
+            <input ng-model="formConfig.maxlength" type="number">
+        </p>
+
+        <p>
+
+            <span data-disabled="" sglk-select="" array-maxlength="formConfig.maxlength" ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" data-text-var="text" multiple="multiple" data-name="sglkSelectColorFilter1" class="targetWidth"></span>
+
+            <!-- status messsages -->
+            <small class="text-info" ng-show="formConfig.predicateColor.length < formConfig.maxlength">{{formConfig.maxlength}} options maxi<br></small>
+            <small class="text-success" ng-show="formConfig.predicateColor.length == formConfig.maxlength">maximum atteint<br></small>
+            <small class="text-error" ng-show="filterForm.sglkSelectColorFilter1.$error.arrayMaxlength">limité à {{formConfig.maxlength}} options<br></small>
+
+            <span sglk-select="" ng-model="formConfig.predicateColor" data-options="formConfig.colorOptions" required="" data-text-var="text" multiple="multiple" data-name="sglkSelectColorFilter" class="targetWidth"></span>
+            <small class="text-error" ng-show="filterForm.sglkSelectColorFilter.$error.required">requis</small>
+
+        </p>
+
+        <p>
+
+            <!-- angular select -->
+            <!--<select ng-model="formConfig.predicate" ng-options="o.text for o in formConfig.options" required name="ngSelectFilter" class="targetWidth"></select>
+            <small class="text-error" ng-show="filterForm.ngSelectFilter.$error.required">requis</small>-->
+
+            <!-- sglk-select -->
+            <span sglk-select="" ng-model="formConfig.predicate" data-options="formConfig.options" data-text-var="text" data-required="" data-name="sglkSelectFilter" class="targetWidth"></span>
+            <small class="text-error" ng-show="filterForm.sglkSelectFilter.$error.required">requis</small>
+        </p>
+
+    </form>
+
+    <ul>
+        <li ng-repeat="product in products | getValueFilter:formConfig.predicateColor:'color' | orderBy:formConfig.predicate.value:formConfig.reverse">
+            <a href="#!/detail/{{product.id}}">
+
+                <!--<img src="{{product.url}}" alt=""/>-->
+
+                <span>{{product.name}} - {{product.price | currency:"€"}}</span>
+            </a>
+        </li>
+    </ul>
+
+    <!--<pre style="position: absolute;top:10px;left:10px;"><small>{{formConfig | json}}</small></pre>-->
+
+</div>
