@@ -9,6 +9,7 @@
         "angular-route"     : "~1.2.3",
         "angular-sanitize"  : "~1.2.3",
         "angular-i18n"      : "~1.2.3",
+        "4venger-angular-l10n": "~3.2.4",
 
         "json3"             : "~3.2.4",
         "jquery"            : "~1.9.1",
