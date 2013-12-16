@@ -14,14 +14,20 @@ angular.module('stApp').factory('Page', function () {
             return description;
         },
         setTitle: function(newTitle) {
+
             title = newTitle;
+
         },
         setDescription: function(newDescription) {
+
             description = newDescription;
+
         },
         setMeta: function(newMeta) {
+
             title       = newMeta.title;
             description = newMeta.description;
+
         }
     };
 });
