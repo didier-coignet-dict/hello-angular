@@ -3,7 +3,4 @@
 git add dist && git commit -m "Auto publish on gh-pages"
 git subtree push --prefix dist origin gh-pages
 
-#cd C:\wamp\www\hello-angular
-#git add *
-#git commit -a -m "auto publish in gh-pages commit + push"
-#git push origin gh-pages
+#TODO https://github.com/X1011/git-directory-deploy
