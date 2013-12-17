@@ -1,9 +1,25 @@
 <div class="hero-unit">
+    <a class="pull-right btn small-btn" href="" ng-click="translate()"><i class="icon-random icon-align-right"></i> {{l10n.translateTo}}</a>
 
     <h1>{{product.name}}</h1>
-    <br>
-    <p><img src="{{product.url}}" alt=""></p>
 
-    <p>{{product.desc}}</p>
+    <p><a class="btn" href="#!/" title="Page précédente"><i class="icon-chevron-left"></i></a></p>
+
+    <div sglk-tabs="">
+
+        <div sglk-tab="" text="{{l10n.detail.spec}}">
+
+            <!--<p><img src="{{product.url}}" alt=""/></p>-->
+            <p class="text-right">{{product.price | currency}}</p>
+            <br>
+            <p>{{product.desc}}</p>
+
+        </div>
+
+        <div sglk-tab="" text="{{l10n.detail.test}}">
+            <pre>{{formConfig.predicate | json}}</pre>
+        </div>
+
+    </div>
 
 </div>

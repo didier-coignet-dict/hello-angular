@@ -1,49 +1,89 @@
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!--[if IE 7]>         <html data-ng-app="stApp" data-ng-controller="PageCtrl" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html data-ng-app="stApp" data-ng-controller="PageCtrl" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html data-ng-app="stApp" data-ng-controller="PageCtrl" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ Page.title() }}</title>
+        <meta name="fragment" content="!">
+        <base href="/">
 
-        <link rel="stylesheet" href="styles/e679e4e7.main.css">
-</head>
-  <body ng-app="stApp" style="background:black">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--
+        <meta name="description" content="{{ Page.description() }}">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!--[if lt IE 9]>
-      <script src="bower_components/es5-shim/es5-shim.js"></script>
-      <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
+        <link rel="stylesheet" href="bower_components/common-lib-js/styles/common-lib-js.css">
+        <link rel="stylesheet" href="styles/40d19e0f.main.css">
+    </head>
+    <body>
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <!--[if lt IE 9]>
+            <script src="bower_components/es5-shim/es5-shim.js"></script>
+            <script src="bower_components/json3/lib/json3.min.js"></script>
+        <![endif]-->
 
-       ga('create', 'UA-39805842-1');
-       ga('send', 'pageview');
-    </script>
+        <!-- Add your site or application content here -->
+        <div class="container" data-ng-view=""></div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
+        <!--<div class="test"></div>-->
 
-        <script src="scripts/7e110f8b.plugins.js"></script>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        <script src="scripts/95424a18.modules.js"></script>
+            ga('create', 'UA-39805842-1');
+            ga('send', 'pageview');
+        </script>
 
-        <script src="scripts/d3517534.scripts.js"></script>
-</body>
+        <!--<script src="scripts/webrtc.io.js"></script>
+
+        <script>
+
+            // TEST https://github.com/webRTC/webrtc.io-demo/blob/master/site/script.js
+            // https://developer.cdn.mozilla.net/media/uploads/demos/d/e/dennismartensson/c07bd916b47fedaf9a30a3cc87938dae/webrtcio_1369430765_demo_package/index.html
+
+            // note: make sure hostname available to all connecting clients
+            // (ie. probably not `localhost`)
+            rtc.connect('ws://localhost:8001');
+
+            /*rtc.createStream({"video": true, "audio":false}, function(stream){
+                // get local stream for manipulation
+                rtc.attachStream(stream, 'local');
+            });*/
+
+            console.log(rtc);
+
+            //rtc.createDataChannel();
+
+            rtc.on('add remote stream', function(stream){
+                // show the remote video
+                rtc.attachStream(stream, 'remote');
+            });
+
+            // more rtc callbacks are available
+        </script>-->
+
+        <script src="scripts/76b784a3.components.js"></script>
+
+        <script src="scripts/2b52cd9d.plugins.js"></script>
+
+        <script src="scripts/f8a78981.modules.js"></script>
+
+        <script src="scripts/c6ae6dc0.lib.js"></script>
+
+        <script src="scripts/dedb595a.scripts.js"></script>
+
+        <!--[if lt IE 9]>
+        <script src="http://yannlombard.com/js/consolelog.js"></script>
+        <![endif]-->
+    </body>
 </html>
